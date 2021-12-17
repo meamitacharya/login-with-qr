@@ -1,7 +1,7 @@
 {
   "name": "@meamitacharya/backend",
   "version": "1.0.0",
-  "description": "Backend Application for File Sharing using Express and MongoDB",
+  "description": "Boilerplate for backend using Express and MongoDB",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
