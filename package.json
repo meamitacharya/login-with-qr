@@ -1,7 +1,7 @@
 {
-  "name": "@meamitacharya/backend",
+  "name": "login-system-backend",
   "version": "1.0.0",
-  "description": "Boilerplate for backend using Express and MongoDB",
+  "description": "Login Application using Express, MongoDB, Passport Js",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
@@ -12,10 +12,11 @@
     "url": "git+https://github.com/meamitacharya/backend-boilerplate.git"
   },
   "keywords": [
-    "boilerplate",
+    "login-system",
     "nodejs",
     "expressjs",
-    "mongodb"
+    "mongodb",
+    "passport js"
   ],
   "author": "Amit Acharya",
   "license": "ISC",
