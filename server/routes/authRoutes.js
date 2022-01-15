@@ -4,10 +4,11 @@ const auth = require("../controllers/authControllers");
 const checkAuth = require("../middlewares/checkAuth");
 const checkAdmin = require("../middlewares/checkAdmin");
 
-router.get("/me", checkAuth, auth.fetchUser);
 router.post("/register", auth.registerUser);
+router.post("/verify", auth.verifyTOTP);
+router.post("/validate", auth.validate);
 router.post("/login", auth.loginUser);
-router.post("/verify", auth.verifyOTP);
+router.get("/me", checkAuth, auth.fetchUser);
 router.get("/admin", checkAuth, checkAdmin, auth.handleAdmin);
 
 module.exports = router;
