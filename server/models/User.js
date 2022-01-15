@@ -19,6 +19,9 @@ const userSchema = new mongoose.Schema(
       default: "user",
     },
     otp: String,
+    tempSecret: String,
+    twoFASecretKey: String,
+    isTwoFAVerify: Boolean,
   },
   {
     timestamps: true,
