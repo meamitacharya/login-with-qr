@@ -21,14 +21,12 @@ exports.registerUser = async (req, res, next) => {
     });
 
     //Generate secret key
-    const secret = speakeasy.generateSecret();
-    //  console.log(secret);
+    const secret = speakeasy.generateSecret({ label: "Hero" });
     createUser.tempSecret = secret.base32;
 
-    //Generate QR
-    const generateQR = await QRCode.toDataURL(secret.otpauth_url);
+    const url = `otpauth://totp/MyLogin?secret=${secret.base32}`;
+    const generateQR = await QRCode.toDataURL(url);
     createUser.QRCode = generateQR;
-    //  console.log(generateQR);
 
     const user = await createUser.save();
 
