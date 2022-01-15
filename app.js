@@ -6,7 +6,7 @@ const path = require("path");
 const connectDB = require("./server/database/dbConnection");
 const logger = require("./server/logger");
 const authRoutes = require("./server/routes/authRoutes");
-const renderRoutes = require("./server/routes/renderRoutes");
+
 
 //Express App Init
 const app = express();
@@ -43,8 +43,6 @@ app.use("/js", express.static(path.resolve(__dirname, "public/js/")));
 //     data: null,
 //   });
 // });
-
-app.use('/',renderRoutes);
 
 //Route Middlewares
 app.use("/api/auth", authRoutes);
