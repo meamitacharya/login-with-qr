@@ -1,10 +1,12 @@
 const express = require("express");
 const dotenv = require("dotenv").config();
 const cors = require("cors");
+const path = require("path");
 
 const connectDB = require("./server/database/dbConnection");
 const logger = require("./server/logger");
 const authRoutes = require("./server/routes/authRoutes");
+const renderRoutes = require("./server/routes/renderRoutes");
 
 //Express App Init
 const app = express();
@@ -22,17 +24,27 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(require("morgan")("tiny", { stream: logger.stream }));
 
+//set view engine
+app.set("view engine", "ejs");
+
+//load static files
+app.use("/css", express.static(path.resolve(__dirname, "public/css/")));
+app.use("/img", express.static(path.resolve(__dirname, "public/img/")));
+app.use("/js", express.static(path.resolve(__dirname, "public/js/")));
+
 /***********************************************************
  * -----------------API Routes------------------------------
  ************************************************************/
 //Index Routes
-app.get("/", (req, res) => {
-  res.status(200).json({
-    type: "success",
-    message: "server is up and running",
-    data: null,
-  });
-});
+// app.get("/", (req, res) => {
+//   res.status(200).json({
+//     type: "success",
+//     message: "server is up and running",
+//     data: null,
+//   });
+// });
+
+app.use('/',renderRoutes);
 
 //Route Middlewares
 app.use("/api/auth", authRoutes);
